@@ -1,0 +1,31 @@
+/* Dropdown */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .cnx_dropdown__toggle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .cnx_dropdown__menu{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+ .cnx_dropdown__item{
+    padding: 5px 10px;
+    &:hover{
+        background-color: #f5f5f5;
+    }
+ } 

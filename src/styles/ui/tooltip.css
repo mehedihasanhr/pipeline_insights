@@ -1,0 +1,25 @@
+/* tooltip */
+.cnx__ins__ui_tooltip{
+    z-index: 100;
+    background-color: #303030;
+    color: #ececec;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+
+
+/* tooltip arrow */
+
+.cnx__ins__ui_tooltip_arrow{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 5px 5px 5px;
+    border-color: transparent transparent #303030 transparent;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    margin-left: -5px;
+}

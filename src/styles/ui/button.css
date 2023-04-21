@@ -1,0 +1,125 @@
+/* button */
+.cnx__btn{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #1967f8;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    & > &_icon{
+        font-size: 18px;
+        padding: 0;
+        margin: 0;
+    }
+
+    &:Hover{
+        cursor: pointer;
+        background-color: rgba(0,0,0, .8);
+        border-color: rgba(0,0,0, .8);
+    }
+
+    /* button veriant */
+    /* primary */
+    &_primary{
+        background-color: #1967f8;
+        border-color:#1967f8;
+        color: #fff;
+        &:hover{
+            background-color: rgba(0,0,0, .8);
+            border-color: rgba(0,0,0, .8);
+        }
+    }
+
+    &_primary > &_icon{
+        color: #fff;
+    }
+
+    /* secondary */
+    &_secondary{
+        background-color: #e4e4e4;
+        border-color: #e4e4e4;
+        color: #000;
+
+        &:hover{
+            background-color: rgba(0,0,0, .8);
+            color: #fff;
+            border-color: rgba(0,0,0, .8);
+        }
+    }
+
+    &_secondary > &_icon{
+        color: #000;
+    }
+
+    /* tertiary */
+    &_tertiary{
+        background-color: #fff;
+        border-color: #dadada;
+        color: #383838;
+
+        &:hover{
+           background-color: #f1f1f1;
+           border-color: #dadada;
+        }
+    }
+
+    /* success */
+    &_success{
+        background-color: #01a545;
+        border-color: #01a545;
+        color: #fff;
+
+        &:hover{
+            background-color: #018839;
+            border-color:  #018839;
+        }
+    }
+
+    &_tertiary > &_icon{
+        color: #383838;
+    }
+
+    /* button sizes */
+    &_lg{
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+
+    &_lg > &_icon{
+        font-size: 20px;
+    }
+
+
+    &_md{
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    &_md > &_icon{
+        font-size: 16px;
+    }
+
+    &_sm{
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    &_sm > &_icon{
+        font-size: 14px;
+    }
+
+    /* disable */
+    &_disabled:disabled{
+        background-color: #e4e4e4;
+        border-color: #e4e4e4;
+        color: #000;
+        cursor: not-allowed;
+    }
+}
+

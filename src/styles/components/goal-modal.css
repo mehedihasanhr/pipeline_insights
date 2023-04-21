@@ -1,0 +1,123 @@
+/* goal modal */
+.cnx_ins__goal_modal__container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+.cnx_ins__goal_modal__wrapper{
+    overflow: hidden;
+}
+
+.cnx_ins__goal_modal__card{
+    width: 100%;
+    width: 630px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.cnx_ins__goal_modal__card_header{
+    &_title{
+        font-size: 15px;
+        font-weight: 600;
+    }
+}
+
+.cnx_ins__goal_modal__card_footer{
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+
+    & > button{
+        padding: 7px 16px;
+    }
+
+    &_cancel{
+        &:hover{
+            background-color: #f7f7f7;
+        }
+    }
+}
+
+.cnx_ins__goal_modal{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0;
+    min-height: 350px;
+}
+
+.cnx_ins__goal_modal_entry{
+    padding: 16px;
+    &_title{
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    &.hr{
+        border-right: 1px solid #e0e0e0;
+    }
+
+    &_list {
+        &_item{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+            padding: 16px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            user-select: none;
+
+            & > svg{
+                width: 18px;
+                height: 18px;
+                margin-top: -0.16rem;
+            }
+
+            & > div{
+                width: 80%;
+
+                span{
+                    display: inline-block;
+                    font-weight: bold;
+                    margin-bottom: 6px;
+                }
+
+                article{
+                    font-size: 13px;
+                }
+            }
+
+            & > .fa-chevron-right,
+            & > .fa-check{
+                margin-left: auto;
+                font-size: 14px;
+            }
+
+            &:hover{
+                background-color: #f7f7f7;
+                cursor: pointer;
+            }
+
+            &:active{
+                color: #fff;
+                background-color: #0963d1;
+                & > svg{
+                    fill: #fff;
+                }
+            }
+
+            &.active{
+                background-color: #eff4fa;
+                color: #0963d1;
+                & > svg{
+                    fill: #0963d1;
+                }
+            }
+        }
+    }
+}
