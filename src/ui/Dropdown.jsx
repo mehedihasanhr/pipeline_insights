@@ -96,19 +96,21 @@ const DropdownMenu = ({children, className, ...props}) => {
         const handleClickOutside = (event) => {
             if (popperElement && !popperElement.contains(event.target)) {
                 setIsOpen(false);
+                clearTimeout(timeout);
+                window.removeEventListener('click', handleClickOutside);
             }
         };
 
 
         if(isOpen) {
             timeout = setTimeout(() => {
-                document.addEventListener('mousedown', handleClickOutside);
-            }, 0);
+                window.addEventListener('click', handleClickOutside);
+            }, 100);
         } else {
-            document.removeEventListener('mousedown', handleClickOutside);
+            window.removeEventListener('click', handleClickOutside);
         }
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            window.removeEventListener('click', handleClickOutside);
             clearTimeout(timeout);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -136,9 +138,9 @@ const DropdownMenu = ({children, className, ...props}) => {
 
 
 
-const Dropdown = ({children}) => {
+const Dropdown = ({children, className=''}) => {
     return(
-        <div className='cnx_dropdown'>
+        <div className={`cnx_dropdown ${className}`}>
             <DropdownProvider>
                 {children}
             </DropdownProvider>
@@ -179,5 +181,6 @@ DropdownMenu.propTypes = {
 }
 
 Dropdown.propTypes = {
+    className: PropTypes.string,
     children: PropTypes.node.isRequired || PropTypes.arrayOf(PropTypes.node).isRequired,
 }
