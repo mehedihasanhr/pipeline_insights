@@ -1,14 +1,12 @@
 /* tooltip */
 .cnx__ins__ui_tooltip{
-    z-index: 100;
+    z-index: 999;
     background-color: #303030;
     color: #ececec;
     font-size: 12px;
     padding: 5px 10px;
     border-radius: 4px;
 }
-
-
 
 /* tooltip arrow */
 
@@ -23,3 +21,4 @@
     left: 50%;
     margin-left: -5px;
 }
+

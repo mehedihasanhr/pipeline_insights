@@ -2,8 +2,13 @@
 import PropTypes from 'prop-types';
 import * as React from 'react';
 
-const SearchBox = React.forwardRef(
-    ({value, onChange, placeholder="Search", className="", ...props}, ref) => {
+const SearchBox = ({value, onChange, placeholder="Search", autoFocus=false, className="", ...props}) => {
+        const ref = React.useRef(null);
+        React.useEffect(() => {
+            if (autoFocus) {
+                ref.current.focus();
+            }
+        }, [autoFocus, ref])
         return (
             <div className='cnx__ins__ui_search'>
                 <input 
@@ -28,7 +33,6 @@ const SearchBox = React.forwardRef(
             </div>
         )
     }
-) 
 
 
 SearchBox.propTypes = {
@@ -36,6 +40,7 @@ SearchBox.propTypes = {
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     className: PropTypes.string,
+    autoFocus: PropTypes.bool,
 }
 
 

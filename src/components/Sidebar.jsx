@@ -22,7 +22,7 @@ const InsightSidebar = () => {
 
                <Dropdown>
                     <Dropdown.Toggle icon={false}>
-                        <Tooltip text="add Goal" placement="right">
+                        <Tooltip text="add Goal" >
                             <Button aria-label="GoalAddButton" variant='success' className='cnx_ins__sidebar_btn'>
                                 <i className="fas fa-plus cnx__btn_icon"/>
                             </Button>

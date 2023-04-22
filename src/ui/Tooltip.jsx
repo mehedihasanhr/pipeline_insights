@@ -110,6 +110,7 @@ const TooltipComponent = ({children, text}) => {
             <div ref={setReference}
                 onMouseOver={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
+                style={{width: 'fit-content'}}
             >
                 {children}
             </div>
