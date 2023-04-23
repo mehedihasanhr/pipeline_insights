@@ -1,54 +1,38 @@
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeGoalModal } from '../services/slices/goalModalSlice';
-import { openGoalFormModal } from '../services/slices/goalFormModalSlice';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
+import Modal from '../ui/Modal';
 import { Icon } from '../utils/Icon';
-import { goal } from '../utils/constants';
+import { reports } from '../utils/constants';
+
+const ReportModal = () => {
+    const [isOpen, setIsOpen] = React.useState(true);
+    const [selectedEntry, setSelectedEntry] = React.useState("Deal");
+    const [selectedReport, setSelectedReport] = React.useState(null);
 
 
-const GoalModal = () => {
-    const {entry, entryType} = useSelector((state) => state.goalModal);
-    const [selectedEntry, setSelectedEntry] = React.useState(entry);
-    const [selectedGoal, setSelectedGoal] = React.useState(entryType);
-    const dispatch = useDispatch();
-    
     const getEntries = () => {
-        return goal?.map((item) => ({
+        return reports?.map((item) => ({
             id: item.id,
             title: item.title,
         }));
     }
 
     const getTypes = (type) => {
-        const goalTypes = goal?.find((item) => item.title === type);
-        return goalTypes?.types;
-    }
-
-
-    // close modal
-    const close = () => dispatch(closeGoalModal());
-
-
-    // continue
-    const handleContinue = () => {
-        dispatch(openGoalFormModal({
-            entry: selectedEntry,
-            entryType: selectedGoal,
-        }));
-        close();
+        const reportTypes = reports?.find((item) => item.title === type);
+        return reportTypes?.types;
     }
 
     return(
+        <Modal isOpen={isOpen}>
            <div className="cnx_ins__goal_modal__container">
                 <Card className="cnx_ins__goal_modal__card">
                     <Card.Header 
                         className="cnx_ins__goal_modal__card_header"
-                        onClick={close}
+                        onClick={() => setIsOpen(false)}
                     >
                         <div className='cnx_ins__goal_modal__card_header_title'>
-                            Goal Modal
+                            Add new report
                         </div>
                     </Card.Header>
                     {/* card body */}
@@ -60,15 +44,12 @@ const GoalModal = () => {
                                         getEntries().map((item) => (
                                             <div 
                                                 key={item.id} 
-                                                onClick={() => {
-                                                    setSelectedEntry(item.title);
-                                                    setSelectedGoal('');
-                                                }}
+                                                onClick={() => setSelectedEntry(item.title)}
                                                 className={`cnx_ins__goal_modal_entry_list_item ${selectedEntry === item.title ? 'active' :''}`
                                             }>
-                                                <Icon type={item.title} />
+                                                <Icon type={item.title} /> 
                                                 <span>{item.title}</span>
-                                                {selectedEntry === item.title &&  <i className="fa-solid fa-chevron-right"></i>} 
+                                                {selectedEntry === item.title && <i className="fa-solid fa-chevron-right"></i>}
                                             </div>
                                         ))
                                     }
@@ -83,17 +64,17 @@ const GoalModal = () => {
                                             getTypes(selectedEntry)?.map((item) => (
                                                 <div 
                                                     key={item.id} 
-                                                    onClick={() => setSelectedGoal(item.title)}
-                                                    className={`cnx_ins__goal_modal_entry_list_item ${selectedGoal === item.title ? 'active' :''}`
+                                                    onClick={() => setSelectedReport(item.title)}
+                                                    className={`cnx_ins__goal_modal_entry_list_item ${selectedReport === item.title ? 'active' :''}`
                                                 }>
                                                     {Icon(item.title)}
-                                                    <div>
-                                                        <span>{item.title}</span>
-                                                        <article>
-                                                            {item.subtitle}
-                                                        </article>
-                                                    </div>
-                                                    {selectedGoal === item.title && <i className="fa-solid fa-check"></i>}
+                                                        <div>
+                                                            <span>{item.title}</span>
+                                                            <article>
+                                                                {item.subtitle}
+                                                            </article>
+                                                        </div>
+                                                    {selectedReport === item.title && <i className="fa-solid fa-check"></i>}
                                                 </div>
                                             ))
                                         }
@@ -105,21 +86,21 @@ const GoalModal = () => {
                     <Card.Footer>
                         <div className='cnx_ins__goal_modal__card_footer'>
                             <Button
-                                onClick={close}
+                                onClick={() => setIsOpen(false)}
                                 className='cnx_ins__goal_modal__card_footer_cancel'
                                 variant='tertiary'
                             >Cancel</Button>
-                            <Button onClick={handleContinue} disabled={ !selectedGoal } variant='success'>Continue</Button>
+                            <Button variant='success'>Continue</Button>
                         </div>
                     </Card.Footer>
                 </Card>
            </div> 
-  
+        </Modal>
     )
 }
 
 
-export default GoalModal;
+export default ReportModal;
 
 
 

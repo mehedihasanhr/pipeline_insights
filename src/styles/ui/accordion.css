@@ -1,0 +1,30 @@
+/* accordion menu */
+.cnx_accordion{
+    position: relative;
+
+    &_item_header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 10px;
+        font-size: 15px;
+        font-weight: 500;
+        /* icon  */
+        &_icon{
+            font-size: 18px;
+         }
+    }
+
+    /* accordion menu body */
+    &_item_body{
+        font-size: 14px;
+        line-height: 1.5;
+        color: #666;
+        /* accordion menu body text */
+        &_text{
+            margin-bottom: 0;
+        }
+    }
+    
+}
+

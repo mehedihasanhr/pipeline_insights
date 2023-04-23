@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {usePopper} from 'react-popper';
 import {motion, AnimatePresence } from 'framer-motion';
@@ -70,6 +71,7 @@ const DropdownToggle = ({children, icon=true, className}) => {
 const DropdownMenu = ({children, className, ...props}) => {
     const { reference, setIsOpen, isOpen} = useDropdown();
     const [popperElement , setPopperElement] = React.useState(null);
+    let DOM = document.querySelector('.cnx_dropdown__menu_wrapper');
     const {styles, attributes} = usePopper(reference, popperElement, {
         placement: 'bottom-start',
         modifiers: [
@@ -116,23 +118,43 @@ const DropdownMenu = ({children, className, ...props}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOpen, popperElement])
 
+    // create element in html body
+    React.useEffect(() => {
+        const el = document.createElement('div');
+        el.className = 'cnx_dropdown__menu_wrapper';
+        document.body.appendChild(el);
+        
+        setPopperElement(el);
+        return () => {
+            document.body.removeChild(el);
+        }
+    }, [])
+
+    
+    if(!DOM) {
+        return null
+    }
+
     return(
-        <AnimatePresence>
-            {isOpen && (
-                <motion.div 
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1 }}
-                    exit={{opacity: 0}}
-                    className={`cnx_dropdown__menu ${isOpen ? 'cnx_dropdown__menu_open' : ''} ${className}`}
-                    ref={setPopperElement}
-                    style={styles.popper}
-                    {...attributes.popper}
-                    {...props}
-                >
-                    {children}
-                </motion.div>
-            )}
-        </AnimatePresence>
+       ReactDOM.createPortal(
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div 
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1 }}
+                        exit={{opacity: 0}}
+                        className={`cnx_dropdown__menu ${isOpen ? 'cnx_dropdown__menu_open' : ''} ${className}`}
+                        ref={setPopperElement}
+                        style={styles.popper}
+                        {...attributes.popper}
+                        {...props}
+                    >
+                        {children}
+                    </motion.div>
+                )}
+            </AnimatePresence>, 
+            DOM
+       )
     )
 } 
 

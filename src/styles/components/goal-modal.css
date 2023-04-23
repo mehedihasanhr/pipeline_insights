@@ -48,6 +48,10 @@
     min-height: 350px;
 }
 
+.cnx_ins__goal_form_modal{
+    min-height: fit-content;
+}
+
 .cnx_ins__goal_modal_entry{
     padding: 16px;
     &_title{
@@ -346,4 +350,12 @@
 }
 .cnx_time_periods__input{
     width: 60%;
+}
+
+
+
+.cnx_ins__goal_modal__tracking_input_error{
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }
