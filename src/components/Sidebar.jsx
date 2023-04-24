@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openGoalModal } from '../services/slices/goalModalSlice';
+import { openDashboardModal } from '../services/slices/dashboardModalSlice';
+import { openSectionModal } from '../services/slices/sectionModalSlice';
 import SearchBox from '../ui/Searchbox';
 import Button from '../ui/Button';
 import Tooltip from '../ui/Tooltip';
@@ -9,6 +11,7 @@ import Accordion from '../ui/Accordion';
 import { NavLink } from 'react-router-dom';
 import { Icon } from '../utils/Icon';
 import _ from 'lodash';
+import TextHighlighter from './TextHighlighter';
 
 
 const InsightSidebar = () => {
@@ -71,7 +74,7 @@ const InsightSidebar = () => {
                             <span>Report</span>
                         </Dropdown.Item>
                         
-                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                        <Dropdown.Item onClick={() => dispatch(openDashboardModal())} className="cnx_ins__sidebar_header_dd_item">
                             <i className="fa-solid fa-chart-pie" />
                             <span>Dashboard</span>
                         </Dropdown.Item>
@@ -105,12 +108,14 @@ const InsightSidebar = () => {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu className="cnx_ins__sidebar_header_dd">
-                                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                        <Dropdown.Item onClick={() => dispatch(openDashboardModal())} className="cnx_ins__sidebar_header_dd_item">
                                             <i className="fa-solid fa-plus cnx_font_sm" />
                                             <span>Dashboard</span>
                                         </Dropdown.Item>
                                         
-                                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                        <Dropdown.Item
+                                        onClick={() => dispatch(openSectionModal({  type: 'DASHBOARD_SECTION', from: '' }))} 
+                                        className="cnx_ins__sidebar_header_dd_item">
                                             <i className="fa-solid fa-plus cnx_font_sm" />
                                             <span>Section</span>
                                         </Dropdown.Item>
@@ -147,12 +152,17 @@ const InsightSidebar = () => {
                                                     </Dropdown.Toggle>
 
                                                     <Dropdown.Menu className="cnx_ins__sidebar_header_dd">
-                                                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                                        <Dropdown.Item onClick={() => dispatch(openDashboardModal())} className="cnx_ins__sidebar_header_dd_item">
                                                             <i className="fa-solid fa-plus cnx_font_sm" />
                                                             <span>Dashboard</span>
                                                         </Dropdown.Item>
                                                         
-                                                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                                        <Dropdown.Item 
+                                                            onClick={() => dispatch(openSectionModal({
+                                                                type: 'DASHBOARD_SECTION',
+                                                                from: ''
+                                                            }))} 
+                                                        className="cnx_ins__sidebar_header_dd_item">
                                                             <i className="fa-solid fa-plus cnx_font_sm" />
                                                             <span>Section</span>
                                                         </Dropdown.Item>
@@ -170,6 +180,7 @@ const InsightSidebar = () => {
                                             {/* dashboard */}
                                                 {getDashboardsBySection(section)?.map((dashboard) => (
                                                     <div key={dashboard.id} className='cnx_ins__sidebar_item'>
+                                                         
                                                         <NavLink 
                                                             to={`/insights/dashboards/${dashboard.id}`}
                                                             className={({isActive}) => isActive ? 'cnx_ins__sidebar_item_link active' : 'cnx_ins__sidebar_item_link'}
@@ -177,7 +188,10 @@ const InsightSidebar = () => {
                                                         
                                                             <span>
                                                                 <i className="fa-solid fa-chart-pie" />
-                                                                {dashboard.title}
+                                                                    <TextHighlighter
+                                                                        searchWords={search}
+                                                                        textToHighlight={dashboard.title}
+                                                                    />
                                                             </span> 
                                                         
                                                             <button aria-label='moveItem' className="cnx_ins__sidebar_item_move">
@@ -219,7 +233,7 @@ const InsightSidebar = () => {
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu className="cnx_ins__sidebar_header_dd">
-                                            <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                            <Dropdown.Item onClick={() => dispatch(openGoalModal())} className="cnx_ins__sidebar_header_dd_item">
                                                 <Icon type="Goal" />
                                                 <span>Goals</span>
                                             </Dropdown.Item>
@@ -276,7 +290,7 @@ const InsightSidebar = () => {
                                             </div>
                                             <Accordion.Item.Body>
                                                 {/* goals */}
-                                                    {goals.filter(g => g.status === _.lowerCase(section))?.map((goal) => (
+                                                    {goals.filter(g => g.status === _.lowerCase(section))?.filter(g => _.lowerCase(g.title).includes(_.lowerCase(search))).map((goal) => (
                                                         <div key={goal.id} className='cnx_ins__sidebar_item'>
                                                             <NavLink 
                                                                 to={`/insights/dashboards/${goal.id}`}
@@ -285,7 +299,10 @@ const InsightSidebar = () => {
                                                             
                                                                 <span>
                                                                     <Icon type={goal.type} />
-                                                                    {goal.title}
+                                                                    <TextHighlighter
+                                                                        searchWords={search}
+                                                                        textToHighlight={goal.title}
+                                                                    />
                                                                 </span> 
                                                             
                                                                 <button aria-label='moveItem' className="cnx_ins__sidebar_item_move">
@@ -309,7 +326,7 @@ const InsightSidebar = () => {
             {/* end Goal */}
 
             {/* Reports */}
-            <Accordion>
+                <Accordion>
                     <Accordion.Item defaultActive={true}>
                         <div className='cnx_ins__sidebar_dashboards_header'>
                             <Accordion.Item.Header icon={false} className='__accordion'>
@@ -332,7 +349,7 @@ const InsightSidebar = () => {
                                             <span>Reports</span>
                                         </Dropdown.Item>
                                         
-                                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                        <Dropdown.Item onClick={() => dispatch(openSectionModal({  type: 'REPORT_SECTION', from: '' }))} className="cnx_ins__sidebar_header_dd_item">
                                             <i className="fa-solid fa-plus cnx_font_sm" />
                                             <span>Section</span>
                                         </Dropdown.Item>
@@ -371,10 +388,12 @@ const InsightSidebar = () => {
                                                     <Dropdown.Menu className="cnx_ins__sidebar_header_dd">
                                                         <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
                                                             <i className="fa-solid fa-plus cnx_font_sm" />
-                                                            <span>Dashboard</span>
+                                                            <span>Report</span>
                                                         </Dropdown.Item>
                                                         
-                                                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                                        <Dropdown.Item
+                                                        onClick={() => dispatch(openSectionModal({  type: 'REPORT_SECTION', from: '' }))}
+                                                        className="cnx_ins__sidebar_header_dd_item">
                                                             <i className="fa-solid fa-plus cnx_font_sm" />
                                                             <span>Section</span>
                                                         </Dropdown.Item>
@@ -390,7 +409,7 @@ const InsightSidebar = () => {
                                         </div>
                                         <Accordion.Item.Body>
                                             {/* dashboard */}
-                                                {getReportsBySection(section)?.map((report) => (
+                                                {getReportsBySection(section)?.filter(g => _.lowerCase(g.title).includes(_.lowerCase(search))).map((report) => (
                                                     <div key={report.id} className='cnx_ins__sidebar_item'>
                                                         <NavLink 
                                                             to={`/insights/reports/${report.id}`}
@@ -398,7 +417,10 @@ const InsightSidebar = () => {
                                                         > 
                                                             <span>
                                                                 <Icon type={report.type} />
-                                                                {report.title}
+                                                                <TextHighlighter
+                                                                    searchWords={search}
+                                                                    textToHighlight={report.title}
+                                                                />
                                                             </span> 
                                                         
                                                             <button aria-label='moveItem' className="cnx_ins__sidebar_item_move">
@@ -429,3 +451,4 @@ const InsightSidebar = () => {
 }
 
 export default InsightSidebar;
+

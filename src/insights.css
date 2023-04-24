@@ -399,6 +399,51 @@
       margin-bottom: 0;
     }
 
+.cnx__text {
+  display: flex;
+  align-items: center;
+}
+
+.cnx__text > span {
+    width: -moz-fit-content !important;
+    width: fit-content !important;
+  }
+
+.cnx__text > span {
+    display: inline-block;
+  }
+
+.cnx__text > span.__highlight {
+      color: #000;
+      font-weight: 600;
+      background: #FFFF00;
+    }
+
+/* form */
+
+.cnx__ins__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #575757;
+  font-weight: 500;
+  gap: 6px;
+}
+
+.cnx__ins__input {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.cnx__ins__input:focus {
+    border: 1px solid #1153e2;
+  }
+
 /* global */
 
 .cnx_insights {
@@ -1010,5 +1055,45 @@
   font-size: 12px;
   margin-top: 5px;
 }
+
+/* add dashboard */
+
+.cnx__ins__new_dashboard_modal {
+  width: 350px;
+  margin: 0 auto;
+}
+
+.cnx__ins__new_dashboard_modal_header h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #535353;
+    margin: 0;
+  }
+
+.cnx_ins__new_dashboard__card_footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.cnx__ins__new_dashboard_modal_body__dd_wrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #575757;
+    font-weight: 500;
+    gap: 6px;
+  }
+
+.cnx__ins__new_dashboard_modal_body__dd{
+  position: relative;
+}
+
+.cnx__ins__new_dashboard_modal_body__dd_menu {
+    width: 320px;
+  }
 
 

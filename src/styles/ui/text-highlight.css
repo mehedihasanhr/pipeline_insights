@@ -1,0 +1,14 @@
+.cnx__text{
+    display: flex;
+    align-items: center;
+    & > span{
+        display: inline-block;
+        width: fit-content !important;
+
+        &.__highlight{
+            color: #000;
+            font-weight: 600;
+            background: #FFFF00;
+        }
+    }
+}

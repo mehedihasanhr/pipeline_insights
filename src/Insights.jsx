@@ -10,11 +10,15 @@ import InsightSidebar from './components/Sidebar';
 import GoalModal from './components/GoalModal';
 import GoalFormModal from './components/GoalFormModal';
 import Modal from './ui/Modal';
+import NewDashboardModal from './components/NewDashboardModal';
+import AddSectionModal from './components/AddSectionModal';
 // import ReportModal from './components/ReportModal';
 
 const InsightsComponent = () => {
   const {goalModalOpen} = useSelector((state) => state.goalModal);
   const {goalFormModalOpen} = useSelector((state) => state.goalFormModal);
+  const {dashboardModalOpen} = useSelector((state) => state.dashboardModal);
+  const {sectionModalOpen} = useSelector((state) => state.sectionModal);
 
 
   return(
@@ -31,6 +35,11 @@ const InsightsComponent = () => {
            {goalFormModalOpen && <GoalFormModal /> }
         </Modal>
         {/* <ReportModal /> */}
+
+        <Modal isOpen={dashboardModalOpen || sectionModalOpen}>
+          { dashboardModalOpen && <NewDashboardModal /> }
+          { sectionModalOpen && <AddSectionModal />}
+        </Modal>
     </div>
   )
 }

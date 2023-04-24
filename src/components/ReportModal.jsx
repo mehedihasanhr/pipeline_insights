@@ -29,7 +29,7 @@ const ReportModal = () => {
                 <Card className="cnx_ins__goal_modal__card">
                     <Card.Header 
                         className="cnx_ins__goal_modal__card_header"
-                        onClick={() => setIsOpen(false)}
+                        onClose={() => setIsOpen(false)}
                     >
                         <div className='cnx_ins__goal_modal__card_header_title'>
                             Add new report

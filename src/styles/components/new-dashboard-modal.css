@@ -1,0 +1,43 @@
+/* add dashboard */
+.cnx__ins__new_dashboard_modal{
+    width: 350px;
+    margin: 0 auto;
+}
+
+
+
+.cnx__ins__new_dashboard_modal_header{
+    h4{
+        font-size: 16px;
+        font-weight: 600;
+        color: #535353;
+        margin: 0;
+    }
+}
+
+
+.cnx_ins__new_dashboard__card_footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.cnx__ins__new_dashboard_modal_body__dd{
+    &_wrapper{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #575757;
+        font-weight: 500;
+        gap: 6px;
+    }
+
+    position: relative;
+
+    &_menu{
+         width: 320px;
+    }
+}

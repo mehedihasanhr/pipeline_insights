@@ -8,9 +8,12 @@ import goalFormModalReducer from "./slices/goalFormModalSlice";
 
 // dashboard
 import dashboardReducer from "./slices/dashboardSlice";
+import dashboardModalReducer from "./slices/dashboardModalSlice";
 
 // reports
 import reportReducer from "./slices/reportSlice";
+
+import sectionModalReducer from "./slices/sectionModalSlice";
 
 export const store = configureStore({
     reducer: {
@@ -19,7 +22,10 @@ export const store = configureStore({
         goalModal : goalModalReducer,
         goalFormModal: goalFormModalReducer,
         dashboards: dashboardReducer,
+        dashboardModal: dashboardModalReducer,
         reports: reportReducer,
+        sectionModal: sectionModalReducer,
+
     },
     middleware: (getDefaultMiddleware) => 
         getDefaultMiddleware().concat(apiSlice.middleware),

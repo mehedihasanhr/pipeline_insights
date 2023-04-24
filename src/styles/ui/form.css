@@ -1,0 +1,22 @@
+/* form */
+.cnx__ins__label{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #575757;
+    font-weight: 500;
+    gap: 6px;
+}
+
+.cnx__ins__input{
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
+    &:focus{
+        border: 1px solid #1153e2;
+    }
+}
