@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openGoalModal } from '../services/slices/goalModalSlice';
 import { openDashboardModal } from '../services/slices/dashboardModalSlice';
 import { openSectionModal } from '../services/slices/sectionModalSlice';
+import { openReportModal } from '../services/slices/reportModalSlice';
 import SearchBox from '../ui/Searchbox';
 import Button from '../ui/Button';
 import Tooltip from '../ui/Tooltip';
@@ -69,7 +70,7 @@ const InsightSidebar = () => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className="cnx_ins__sidebar_header_dd">
-                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                        <Dropdown.Item onClick={() => dispatch(openReportModal())} className="cnx_ins__sidebar_header_dd_item">
                             <i className="fa-solid fa-chart-column" />
                             <span>Report</span>
                         </Dropdown.Item>
@@ -344,7 +345,7 @@ const InsightSidebar = () => {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu className="cnx_ins__sidebar_header_dd">
-                                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                        <Dropdown.Item onClick={() => dispatch(openReportModal())} className="cnx_ins__sidebar_header_dd_item">
                                             <i className="fa-solid fa-plus cnx_font_sm" />
                                             <span>Reports</span>
                                         </Dropdown.Item>
@@ -386,7 +387,7 @@ const InsightSidebar = () => {
                                                     </Dropdown.Toggle>
 
                                                     <Dropdown.Menu className="cnx_ins__sidebar_header_dd">
-                                                        <Dropdown.Item className="cnx_ins__sidebar_header_dd_item">
+                                                        <Dropdown.Item onClick={() => dispatch(openReportModal())} className="cnx_ins__sidebar_header_dd_item">
                                                             <i className="fa-solid fa-plus cnx_font_sm" />
                                                             <span>Report</span>
                                                         </Dropdown.Item>

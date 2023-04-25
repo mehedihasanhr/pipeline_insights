@@ -12,6 +12,7 @@ import dashboardModalReducer from "./slices/dashboardModalSlice";
 
 // reports
 import reportReducer from "./slices/reportSlice";
+import reportModalReducer from "./slices/reportModalSlice";
 
 import sectionModalReducer from "./slices/sectionModalSlice";
 
@@ -24,6 +25,7 @@ export const store = configureStore({
         dashboards: dashboardReducer,
         dashboardModal: dashboardModalReducer,
         reports: reportReducer,
+        reportModal: reportModalReducer,
         sectionModal: sectionModalReducer,
 
     },

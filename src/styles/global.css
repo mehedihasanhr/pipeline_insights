@@ -8,4 +8,123 @@
     overflow: hidden;
 }
 
+.cnx_insights > main{
+    flex: 1;
+}
 
+.cnx__ins_dashboard_navbar{
+    padding: 16px;
+}
+
+.cnx__editable_box {
+    box-sizing: border-box;
+    position: relative;
+    div{
+        visibility: hidden;
+        width: fit-content;
+        position: absolute;
+        pointer-events: none;
+        padding: 7px 30px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    &__input {
+        width: 100%;
+        height: 100%;
+        border: 1px solid transparent;
+        outline: none;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: transparent;
+        color: #000;
+        &:focus {
+            background-color: #e6e6e6;
+            border-color: #055cff56;
+        }
+    }
+
+    &__icon{
+        opacity: 0;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        pointer-events: none;
+    }
+
+    &__input:hover + &__icon{
+        opacity: 1;
+    }
+}
+
+
+/* dashboard */
+.cnx__ins_dashboard{
+    max-height: 100vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid yellow;
+}
+
+.cnx__ins_dashboard_navbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cnx__ins_dashboard_navbar_btn_group{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    padding-right: 14px;
+    border-right: 1px solid #c7c7c7;
+    gap: 10px;
+
+    &:first-child{
+        border-right: 1px solid #c7c7c7;
+    }
+}
+
+.cnx__period_filter__title{
+    display: flex;
+    align-items: center;
+    .cnx__period_filter__title_btn{
+        padding: 6px 12px 6px 12px;
+        &:first-child{
+            &.active{
+                border-right: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                border-color: #4d85ff;
+                color: #4d85ff;
+                background-color: #f1f4fc;
+                svg{
+                    fill: #4d85ff;
+                }
+            }
+        }
+
+        &.__close{
+            display: none;
+            padding: 6px 10px;
+            font-size: 14px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+
+            &.active{
+                display: block;
+                color: #4d85ff;
+                border-color: #4d85ff;
+                background-color: #f1f4fc;
+            }
+        }
+    }
+}
+
+.cnx__ins_dashboard_container{
+    padding:0 8px;
+}

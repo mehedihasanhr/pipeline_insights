@@ -82,3 +82,26 @@ export const reports = [
     }
 
 ]
+
+
+
+
+// relative time period
+export const relativeDates = ["Yesterday", "Today", "Tomorrow"];
+export const relativePeriod = [
+    "This Week",
+    "Last Week",
+    "This Month",
+    "Last Month",
+    "This Quarter",
+    "Last Quarter",
+    "This Year",
+    "Last Year",
+];
+
+export const rollingPeriod = [
+    "Past 2 weeks",
+    "Past 3 months",
+    "past 6 months",
+    "Past 12 months",
+];

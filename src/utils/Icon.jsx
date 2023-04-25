@@ -5,6 +5,7 @@ import { LeadIcon } from "../Icons/LeadIcon";
 import  GoalIcon  from "../Icons/GoalIcon";
 import PropTypes from 'prop-types';
 import { MoveIcon } from "../Icons/MoveIcon";
+import ResizeCorner from "../Icons/ResizeCorner";
 
 export const Icon = ({type, className=""}) => {
     switch(type) {
@@ -20,6 +21,8 @@ export const Icon = ({type, className=""}) => {
             return <ForecastIcon className={className} />
         case 'Move':
             return <MoveIcon className={className} />
+        case 'Resize':
+            return <ResizeCorner className={className} />
         default:
             return null;
     }

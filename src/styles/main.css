@@ -3,10 +3,12 @@
 /* ui */
 @import './ui/index.css';
 
+/* components */
+@import './components/index.css';
+
 /* global */
 @import './global.css';
 
-/* components */
-@import './components/index.css';
+
 
 

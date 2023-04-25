@@ -68,17 +68,22 @@ const DropdownToggle = ({children, icon=true, className}) => {
 }
 
 // dropdown menu
-const DropdownMenu = ({children, className, ...props}) => {
+const DropdownMenu = ({children, className, offset=[0, 3], ...props}) => {
     const { reference, setIsOpen, isOpen} = useDropdown();
     const [popperElement , setPopperElement] = React.useState(null);
-    let DOM = document.querySelector('.cnx_dropdown__menu_wrapper');
+    
+    // generate random id for dropdown menu
+    const id = React.useMemo(() => Math.random().toString(36).substr(2, 9), []);
+
+
+    let DOM = document.getElementById(id);
     const {styles, attributes} = usePopper(reference, popperElement, {
         placement: 'bottom-start',
         modifiers: [
             {
                 name: 'offset',
                 options: {
-                    offset: [0, 3],
+                    offset,
                 },
             },
             {
@@ -121,7 +126,7 @@ const DropdownMenu = ({children, className, ...props}) => {
     // create element in html body
     React.useEffect(() => {
         const el = document.createElement('div');
-        el.className = 'cnx_dropdown__menu_wrapper';
+        el.id = id;
         document.body.appendChild(el);
         
         setPopperElement(el);
@@ -200,6 +205,7 @@ DropdownToggle.propTypes = {
 DropdownMenu.propTypes = {
     children: PropTypes.node.isRequired || PropTypes.arrayOf(PropTypes.node).isRequired,
     className: PropTypes.string,
+    offset: PropTypes.arrayOf(PropTypes.number),
 }
 
 Dropdown.propTypes = {

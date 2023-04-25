@@ -1,0 +1,87 @@
+
+.cnx__react_grid_layout_item{
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+    border-radius: 5px;
+
+    &:hover{
+        box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+    }
+}
+ 
+
+.cnx__react_grid_layout_item__resize{
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    cursor: se-resize;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.cnx__react_grid_layout_item:hover > 
+.cnx__react_grid_layout_item__resize{
+    opacity: 1;    
+}
+
+.react-resizable-handle-se{
+    opacity: 0;
+}
+
+
+.cnx__react_grid_layout_item__close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 6px 8px;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 1;
+    border: none;
+    background-color: transparent;
+
+    svg{
+        width: 20px;
+        height: 20px;
+        fill: #777;
+    }
+}
+
+
+.cnx__react_grid_layout_item:hover >
+.cnx__react_grid_layout_item__close{
+    opacity: 1;
+    pointer-events: auto;
+    cursor: grab;
+}
+
+.cnx__react_grid_layout_item__close:hover{
+    background-color: #f0f0f0;
+    svg{fill: #000;}
+}
+
+
+
+.cnx__delete_drop_zone{
+    position: sticky;
+    bottom: -80px;
+    width: 100%;
+    left: 0;
+    height: 80px;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    background-color: rgb(168, 168, 168);
+
+
+    &.active{
+        bottom: 0;
+        z-index:1;
+        opacity: 1;
+    }
+}
+
+.react-grid-placeholder{
+    background: rgb(74, 74, 255);
+}
